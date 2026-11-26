@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>プロパンガス使用量の目安【家庭用】｜世帯人数・設備・季節から月の使用量を計算</title>
+  <meta name="description" content="ご家庭のプロパンガス（LPガス）の月間使用量の目安を、世帯人数・使う設備（給湯器・コンロ・床暖房・浴室乾燥機）・季節から計算。家族人数別の平均は石油情報センターのプロパンガス消費実態調査をもとにしています。kg換算つき。">
+  <link rel="canonical" href="https://novalis-lab.github.io/lpgas-usage/home/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="novalis">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://novalis-lab.github.io/lpgas-usage/home/">
+  <meta property="og:title" content="プロパンガス使用量の目安【家庭用】">
+  <meta property="og:description" content="世帯人数・設備・季節から、ご家庭のプロパンガスの月間使用量（m³）の目安を計算します。">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#0b0b0d">
+  <link rel="icon" href="https://novalis-lab.github.io/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="https://novalis-lab.github.io/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="https://novalis-lab.github.io/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://novalis-lab.github.io/common.css?v=20261113d">
+  <link rel="stylesheet" href="../style.css?v=1">
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="https://novalis-lab.github.io/">NOVALIS</a>
+    <nav class="switch" aria-label="業務用・家庭用の切り替え">
+      <a href="../">業務用</a>
+      <a href="./" aria-current="page">家庭用</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <p class="kind">家庭用</p>
+    <h1>プロパンガス使用量の<br class="sp">目安を計算</h1>
+    <p class="lead">世帯人数・使う設備・季節から、ご家庭の<b>1か月のガス使用量の目安</b>を出します。入力を変えると、すぐに結果が変わります。</p>
+
+    <section class="card" aria-labelledby="h-people">
+      <h2 id="h-people"><span class="step">1</span>世帯人数</h2>
+      <div class="seg" id="people" data-value="4" style="--n:4" role="group" aria-label="世帯人数">
+        <button type="button" data-v="1">1人</button>
+        <button type="button" data-v="2">2人</button>
+        <button type="button" data-v="3">3人</button>
+        <button type="button" data-v="4">4人</button>
+        <button type="button" data-v="5">5人</button>
+        <button type="button" data-v="6">6人</button>
+        <button type="button" data-v="7">7人以上</button>
+      </div>
+      <p class="help" id="people-help"></p>
+    </section>
+
+    <section class="card" aria-labelledby="h-equip">
+      <h2 id="h-equip"><span class="step">2</span>使う設備</h2>
+      <div class="checks">
+        <label><input type="checkbox" id="eq-heater" checked><span class="box" aria-hidden="true"></span>給湯器</label>
+        <label><input type="checkbox" id="eq-stove" checked><span class="box" aria-hidden="true"></span>コンロ</label>
+        <label><input type="checkbox" id="eq-floor"><span class="box" aria-hidden="true"></span>床暖房</label>
+        <label><input type="checkbox" id="eq-dryer"><span class="box" aria-hidden="true"></span>浴室乾燥機</label>
+      </div>
+
+      <div class="sub-box" id="box-stove">
+        <p class="ttl" id="stove-ttl">コンロ（家庭用 9kW）</p>
+        <div class="fld">
+          <span class="f" id="l-stove-m">1日の使用時間</span>
+          <div class="stepper" data-min="0" data-max="600" data-step="5">
+            <button type="button" class="minus" aria-label="時間を減らす">−</button>
+            <div class="in"><input id="stove-m" type="text" inputmode="numeric" value="30" aria-labelledby="l-stove-m"><span class="u">分</span></div>
+            <button type="button" class="plus" aria-label="時間を増やす">＋</button>
+          </div>
+          <p class="help" id="stove-help"></p>
+        </div>
+      </div>
+
+      <div class="sub-box" id="box-floor" hidden>
+        <p class="ttl">床暖房</p>
+        <div class="fld">
+          <span class="f" id="l-floor-kw">ガス消費量（銘板の数値）</span>
+          <div class="stepper" data-min="0" data-max="100" data-step="0.1">
+            <button type="button" class="minus" aria-label="kWを減らす">−</button>
+            <div class="in"><input id="floor-kw" type="text" inputmode="decimal" value="" placeholder="—" aria-labelledby="l-floor-kw"><span class="u">kW</span></div>
+            <button type="button" class="plus" aria-label="kWを増やす">＋</button>
+          </div>
+          <p class="help">機種による差が大きいので、熱源機の銘板や仕様書の「ガス消費量（暖房）」を入れてください。</p>
+        </div>
+        <div class="grid2">
+          <div class="fld">
+            <span class="f" id="l-floor-h">1日の使用時間</span>
+            <div class="stepper" data-min="0" data-max="24" data-step="0.5">
+              <button type="button" class="minus" aria-label="時間を減らす">−</button>
+              <div class="in"><input id="floor-h" type="text" inputmode="decimal" value="4" aria-labelledby="l-floor-h"><span class="u">時間</span></div>
+              <button type="button" class="plus" aria-label="時間を増やす">＋</button>
+            </div>
+          </div>
+          <div class="fld">
+            <span class="f" id="l-floor-d">月に使う日数</span>
+            <div class="stepper" data-min="0" data-max="31" data-step="1">
+              <button type="button" class="minus" aria-label="日数を減らす">−</button>
+              <div class="in"><input id="floor-d" type="text" inputmode="numeric" value="30" aria-labelledby="l-floor-d"><span class="u">日</span></div>
+              <button type="button" class="plus" aria-label="日数を増やす">＋</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-box" id="box-dryer" hidden>
+        <p class="ttl">浴室乾燥機</p>
+        <div class="fld">
+          <span class="f" id="l-dryer-kw">ガス消費量（銘板の数値）</span>
+          <div class="stepper" data-min="0" data-max="100" data-step="0.1">
+            <button type="button" class="minus" aria-label="kWを減らす">−</button>
+            <div class="in"><input id="dryer-kw" type="text" inputmode="decimal" value="" placeholder="—" aria-labelledby="l-dryer-kw"><span class="u">kW</span></div>
+            <button type="button" class="plus" aria-label="kWを増やす">＋</button>
+          </div>
+          <p class="help">ガス温水式は、給湯器（熱源機）の銘板や浴室乾燥機の仕様書の数値を入れてください。</p>
+        </div>
+        <div class="grid2">
+          <div class="fld">
+            <span class="f" id="l-dryer-h">1回の使用時間</span>
+            <div class="stepper" data-min="0" data-max="24" data-step="0.5">
+              <button type="button" class="minus" aria-label="時間を減らす">−</button>
+              <div class="in"><input id="dryer-h" type="text" inputmode="decimal" value="2" aria-labelledby="l-dryer-h"><span class="u">時間</span></div>
+              <button type="button" class="plus" aria-label="時間を増やす">＋</button>
+            </div>
+          </div>
+          <div class="fld">
+            <span class="f" id="l-dryer-d">月に使う日数</span>
+            <div class="stepper" data-min="0" data-max="31" data-step="1">
+              <button type="button" class="minus" aria-label="日数を減らす">−</button>
+              <div class="in"><input id="dryer-d" type="text" inputmode="numeric" value="10" aria-labelledby="l-dryer-d"><span class="u">日</span></div>
+              <button type="button" class="plus" aria-label="日数を増やす">＋</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fld" id="factor-fld" style="margin-top:18px">
+        <label for="factor">火力係数（コンロ・床暖房・浴室乾燥機）</label>
+        <div class="range-row">
+          <input id="factor" type="range" min="0.3" max="1" step="0.05" value="0.5" aria-describedby="factor-help">
+          <output id="factor-out" for="factor">0.5</output>
+        </div>
+        <div class="ticks" aria-hidden="true"><span>0.3</span><span>弱め</span><span>強め</span><span>1.0</span></div>
+        <p class="help" id="factor-help">ずっと最大の強さでは使わないので、平均するとどのくらいの強さかを掛けます（0.5＝最大の半分）。</p>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="h-season">
+      <h2 id="h-season"><span class="step">3</span>季節</h2>
+      <div class="seg" id="season" data-value="year" style="--n:3" role="group" aria-label="季節">
+        <button type="button" data-v="year">年間の平均</button>
+        <button type="button" data-v="winter">冬<small>12〜2月</small></button>
+        <button type="button" data-v="spring">春<small>3〜5月</small></button>
+        <button type="button" data-v="summer">夏<small>6〜8月</small></button>
+        <button type="button" data-v="autumn">秋<small>9〜11月</small></button>
+      </div>
+      <p class="help" id="season-help"></p>
+    </section>
+
+    <section class="card result" id="result" aria-live="polite"></section>
+
+    <p class="caution">目安です。機器の銘板や仕様書の数値を優先してください。</p>
+
+    <section class="card" aria-labelledby="h-how">
+      <h2 id="h-how">計算のしかた</h2>
+      <ul class="howto">
+        <li><b>給湯器を使う家</b>は、家族人数別の平均使用量（統計）に季節の倍率を掛けます。この平均は、給湯とコンロを使う一般的な家庭の値です</li>
+        <li>コンロを使わない（IHなど）ときは、平均からコンロ分（計算式）を引きます。給湯器を使わないときは、統計が使えないのでコンロだけを計算式で出します</li>
+        <li>床暖房・浴室乾燥機は、ガス消費量（kW）÷ 27.9 × 時間 × 火力係数 × 使う日数 を足します</li>
+        <li>コンロは 9kW ÷ 27.9 × 1日の時間 × 火力係数 × 30日</li>
+        <li>27.9 は、プロパン1m³ ≈ 24,000kcal、1kW ＝ 860kcal/h から（24,000 ÷ 860 ≈ 27.9kWh）</li>
+        <li>重さは <b>1m³ ＝ 約1.99kg</b>（プロパン 0.502m³/kg）で換算しています</li>
+      </ul>
+      <h3>家族人数別の平均（1か月・1世帯）</h3>
+      <table class="tbl">
+        <thead><tr><th scope="col">人数</th><th scope="col">2人以下</th><th scope="col">3人</th><th scope="col">4人</th><th scope="col">5人</th><th scope="col">6人</th><th scope="col">7人以上</th></tr></thead>
+        <tbody><tr><td>m³</td><td>6.5</td><td>8.9</td><td>11.3</td><td>11.7</td><td>12.0</td><td>11.8</td></tr></tbody>
+      </table>
+      <h3>季節の倍率（全国の月別使用量から）</h3>
+      <table class="tbl">
+        <thead><tr><th scope="col">季節</th><th scope="col">冬</th><th scope="col">春</th><th scope="col">夏</th><th scope="col">秋</th></tr></thead>
+        <tbody><tr><td>倍率</td><td id="sf-winter"></td><td id="sf-spring"></td><td id="sf-summer"></td><td id="sf-autumn"></td></tr></tbody>
+      </table>
+      <p class="help">月別の全国平均（m³）：4月 10.5・5月 9.4・6月 8.2・7月 7.0・8月 6.4・9月 6.3・10月 7.7・11月 9.0・12月 10.5・1月 12.2・2月 11.7・3月 10.8（年間の月平均 9.1）。倍率は「その季節3か月の平均 ÷ 年間の月平均」です。</p>
+    </section>
+
+    <section class="notice">
+      <p><b>結果は目安です。</b>実際の使用量は、地域・住まい・お風呂の入り方・機器などで大きく変わります。</p>
+      <p>家族人数別・月別の平均の出典：石油情報センター「<a href="https://oil-info.ieej.or.jp/documents/data/20080303_2.pdf" target="_blank" rel="noopener">平成18年度 プロパンガス消費実態調査</a>」（平成19年12月。調査期間 平成18年4月〜平成19年3月、プロパンガスを使う5,610世帯）。人数別の公的な統計はこれが最新のため、今の暮らしとは少し違う場合があります。</p>
+      <p>kg換算の出典：日本LPガス協会「プロパン、ブタン、ＬＰガスの立方メートルからキログラムへの換算係数について」（<a href="https://www.pref.yamanashi.jp/documents/60408/lpgas_guidline_keisuu.pdf" target="_blank" rel="noopener">山梨県の掲載ページ（PDF）</a>）</p>
+      <p>お店の目安は <a href="../">業務用のページ</a> へ。</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="footer-home" href="https://novalis-lab.github.io/">ほかのツールも見る<span aria-hidden="true">→</span></a>
+    <p>計算結果は目安です。</p>
+    <p class="footer-logo" aria-hidden="true">NOVALIS</p>
+  </footer>
+
+  <script src="../lpgas.js?v=1"></script>
+  <script src="../home.js?v=1"></script>
+</body>
+</html>

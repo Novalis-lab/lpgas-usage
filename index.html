@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>プロパンガス使用量の目安【業務用】｜コンロ・給湯器から月の使用量を計算</title>
+  <meta name="description" content="飲食店・喫茶店などのプロパンガス（LPガス）の月間使用量の目安を、コンロの台数と使用時間、給湯器の号数とお湯を使う時間、営業日数から計算。少なめ・標準・多めの幅と、機器ごとの内訳、kg換算も表示します。">
+  <link rel="canonical" href="https://novalis-lab.github.io/lpgas-usage/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="novalis">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://novalis-lab.github.io/lpgas-usage/">
+  <meta property="og:title" content="プロパンガス使用量の目安【業務用】">
+  <meta property="og:description" content="コンロと給湯器の使い方から、お店のプロパンガスの月間使用量（m³）の目安を計算します。">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#0b0b0d">
+  <link rel="icon" href="https://novalis-lab.github.io/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="https://novalis-lab.github.io/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="https://novalis-lab.github.io/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://novalis-lab.github.io/common.css?v=20261113d">
+  <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="https://novalis-lab.github.io/">NOVALIS</a>
+    <nav class="switch" aria-label="業務用・家庭用の切り替え">
+      <a href="./" aria-current="page">業務用</a>
+      <a href="home/">家庭用</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <p class="kind">業務用</p>
+    <h1>プロパンガス使用量の<br class="sp">目安を計算</h1>
+    <p class="lead">コンロと給湯器の使い方から、お店の<b>1か月のガス使用量の目安</b>を出します。入力を変えると、すぐに結果が変わります。</p>
+
+    <section class="card" aria-labelledby="h-stove">
+      <h2 id="h-stove"><span class="step">1</span>コンロ</h2>
+      <div class="grid2">
+        <div class="fld">
+          <span class="f" id="l-stoves">台数</span>
+          <div class="stepper" data-min="0" data-max="20" data-step="1">
+            <button type="button" class="minus" aria-label="台数を減らす">−</button>
+            <div class="in"><input id="stoves" type="text" inputmode="numeric" value="1" aria-labelledby="l-stoves"><span class="u">台</span></div>
+            <button type="button" class="plus" aria-label="台数を増やす">＋</button>
+          </div>
+        </div>
+        <div class="fld">
+          <span class="f" id="l-stove-h">1台の1日の使用時間</span>
+          <div class="stepper" data-min="0" data-max="24" data-step="0.5">
+            <button type="button" class="minus" aria-label="時間を減らす">−</button>
+            <div class="in"><input id="stove-h" type="text" inputmode="decimal" value="2" aria-labelledby="l-stove-h"><span class="u">時間</span></div>
+            <button type="button" class="plus" aria-label="時間を増やす">＋</button>
+          </div>
+        </div>
+      </div>
+      <div class="fld" style="margin-top:18px">
+        <span class="f" id="l-stove-kw">コンロ1台のガス消費量</span>
+        <div class="stepper" data-min="0" data-max="200" data-step="0.1">
+          <button type="button" class="minus" aria-label="kWを減らす">−</button>
+          <div class="in"><input id="stove-kw" type="text" inputmode="decimal" value="18" aria-labelledby="l-stove-kw"><span class="u">kW</span></div>
+          <button type="button" class="plus" aria-label="kWを増やす">＋</button>
+        </div>
+        <p class="help">業務用コンロは機種による差が大きいので、<b>銘板（ガス消費量の表示）の数値</b>に書きかえてください。初期値の18kWは仮の値です。</p>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="h-heater">
+      <h2 id="h-heater"><span class="step">2</span>給湯器</h2>
+      <div class="fld">
+        <span class="f">号数</span>
+        <div class="seg" id="heater" data-value="20" style="--n:5" role="group" aria-label="給湯器の号数">
+          <button type="button" data-v="0">なし</button>
+          <button type="button" data-v="16">16号</button>
+          <button type="button" data-v="20">20号</button>
+          <button type="button" data-v="24">24号</button>
+          <button type="button" data-v="32">32号</button>
+        </div>
+        <p class="help" id="heater-kw"></p>
+      </div>
+      <div class="fld" id="heater-time">
+        <span class="f" id="l-heater-m">1日に実際にお湯を使う時間</span>
+        <div class="stepper" data-min="0" data-max="1440" data-step="5">
+          <button type="button" class="minus" aria-label="時間を減らす">−</button>
+          <div class="in"><input id="heater-m" type="text" inputmode="numeric" value="45" aria-labelledby="l-heater-m"><span class="u">分</span></div>
+          <button type="button" class="plus" aria-label="時間を増やす">＋</button>
+        </div>
+        <p class="help">蛇口からお湯が出ている時間の合計です。「30分〜1時間」なら45分くらいを入れてください。</p>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="h-days">
+      <h2 id="h-days"><span class="step">3</span>営業日数と火力</h2>
+      <div class="fld">
+        <span class="f" id="l-days">月の営業日数</span>
+        <div class="stepper" data-min="1" data-max="31" data-step="1">
+          <button type="button" class="minus" aria-label="日数を減らす">−</button>
+          <div class="in"><input id="days" type="text" inputmode="numeric" value="15" aria-labelledby="l-days"><span class="u">日</span></div>
+          <button type="button" class="plus" aria-label="日数を増やす">＋</button>
+        </div>
+      </div>
+      <div class="fld">
+        <label for="factor">火力係数（コンロ）</label>
+        <div class="range-row">
+          <input id="factor" type="range" min="0.3" max="1" step="0.05" value="0.5" aria-describedby="factor-help">
+          <output id="factor-out" for="factor">0.5</output>
+        </div>
+        <div class="ticks" aria-hidden="true"><span>0.3</span><span>弱め</span><span>強め</span><span>1.0</span></div>
+        <p class="help" id="factor-help">コンロはずっと最大の火力では使わないので、平均するとどのくらいの強さかを掛けます（0.5＝最大の半分）。給湯器は「実際にお湯を使う時間」を入れるので掛けません。</p>
+      </div>
+    </section>
+
+    <section class="card result" id="result" aria-live="polite"></section>
+
+    <p class="caution">目安です。機器の銘板や仕様書の数値を優先してください。</p>
+
+    <section class="card" aria-labelledby="h-how">
+      <h2 id="h-how">計算のしかた</h2>
+      <ul class="howto">
+        <li>使用量（m³）＝ 機器のガス消費量（kW）÷ <b>27.9</b> × 使用時間（時間）</li>
+        <li>27.9 は、プロパン1m³ ≈ 24,000kcal、1kW ＝ 860kcal/h から（24,000 ÷ 860 ≈ 27.9kWh）</li>
+        <li>コンロ ＝ kW × 台数 ÷ 27.9 × 1日の時間 × 火力係数 × 営業日数</li>
+        <li>給湯器 ＝ 号数のkW ÷ 27.9 × お湯を使う時間 × 営業日数（16号 34.9kW・20号 43.6kW・24号 52.3kW・32号 69.2kW）</li>
+        <li>少なめ・多めは、使い方のばらつきとして標準の <b>±25%</b> にしています</li>
+        <li>重さは <b>1m³ ＝ 約1.99kg</b>（プロパン 0.502m³/kg）で換算しています</li>
+      </ul>
+    </section>
+
+    <section class="notice">
+      <p><b>結果は目安です。</b>実際の使用量は、料理の内容・季節・機器の古さなどで変わります。</p>
+      <p>kg換算の出典：日本LPガス協会「プロパン、ブタン、ＬＰガスの立方メートルからキログラムへの換算係数について」（<a href="https://www.pref.yamanashi.jp/documents/60408/lpgas_guidline_keisuu.pdf" target="_blank" rel="noopener">山梨県の掲載ページ（PDF）</a>）</p>
+      <p>ご家庭の目安は <a href="home/">家庭用のページ</a> へ。</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="footer-home" href="https://novalis-lab.github.io/">ほかのツールも見る<span aria-hidden="true">→</span></a>
+    <p>計算結果は目安です。</p>
+    <p class="footer-logo" aria-hidden="true">NOVALIS</p>
+  </footer>
+
+  <script src="lpgas.js?v=1"></script>
+  <script src="biz.js?v=1"></script>
+</body>
+</html>
